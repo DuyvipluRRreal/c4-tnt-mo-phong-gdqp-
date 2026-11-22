@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C-4 và TNT: lịch sử và mô hình trưng bày</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#222a21; --panel:#2d372c; --ink:#ece7d6; --muted:#b9b6a2;
+  --c4:#cfc7ab; --tnt:#d6a02e; --red:#d9573b; --accent:var(--c4);
+  --sans:"Be Vietnam Pro",system-ui,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --pad:clamp(1rem,4vw,2.5rem);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:4rem}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.7}
+body[data-cat="c4"]{--accent:var(--c4)}
+body[data-cat="tnt"]{--accent:var(--tnt)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* thanh điều hướng */
+.top{position:sticky;top:0;z-index:5;display:flex;gap:.5rem;align-items:center;padding:.6rem var(--pad);background:#1a201a;border-bottom:1px solid #3a463a}
+.top a{font:600 .95rem var(--sans);text-decoration:none;padding:.45rem .9rem;border-radius:.4rem;color:var(--muted)}
+.top a[aria-current="page"]{background:var(--accent);color:#1a201a}
+.top .brand{margin-right:auto;color:var(--ink);font-weight:800;padding-left:0}
+
+main{max-width:62rem;margin:0 auto;padding:var(--pad)}
+[hidden]{display:none!important}
+
+/* trang chủ */
+.intro{max-width:40rem;margin:1.5rem 0 2rem}
+.intro h1{font:900 clamp(2rem,6vw,3.4rem)/1.1 var(--sans);margin:0 0 .75rem;letter-spacing:-.02em}
+.intro p{margin:0;color:var(--muted)}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.choice{display:flex;flex-direction:column;justify-content:space-between;min-height:18rem;padding:1.5rem;border-radius:.25rem;text-decoration:none;color:#1a201a;background:var(--bg);position:relative;overflow:hidden}
+.choice.c4{--bg:var(--c4)} .choice.tnt{--bg:var(--tnt)}
+.choice .big{font:900 clamp(4.5rem,16vw,8rem)/.9 var(--sans);letter-spacing:-.04em}
+.choice .desc{font:600 1.05rem var(--sans);max-width:16rem}
+.choice .go{align-self:flex-start;margin-top:1rem;font:800 1rem var(--sans);background:#1a201a;color:var(--bg);padding:.6rem 1.1rem;border-radius:.35rem}
+.choice:hover .go{background:#000}
+.choice::after{content:"";position:absolute;right:-2rem;bottom:-2rem;width:9rem;height:9rem;border:10px solid rgba(26,32,26,.14);border-radius:50%}
+.note{margin-top:1.5rem;font-size:.95rem;color:var(--muted)}
+
+/* trang loại bom */
+.cat-head{padding:1rem 0 1.25rem;border-bottom:6px solid var(--accent)}
+.cat-head h1{font:900 clamp(3.5rem,14vw,7rem)/.9 var(--sans);margin:0;letter-spacing:-.04em;color:var(--accent)}
+.cat-head p{margin:.6rem 0 0;font:600 1.15rem var(--sans);color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}
+.tabs a{font:600 1rem var(--sans);text-decoration:none;padding:.65rem 1.1rem;border:2px solid var(--accent);border-radius:.4rem}
+.tabs a[aria-current="true"]{background:var(--accent);color:#1a201a}
+.tabs a.model{border-style:dashed;border-color:var(--red)}
+.tabs a.model[aria-current="true"]{background:var(--red);color:#fff}
+.panel{max-width:44rem}
+.panel h2{font:800 1.6rem/1.2 var(--sans);margin:1.5rem 0 .5rem}
+.panel p{margin:.6rem 0}
+dl{margin:1rem 0;display:grid;grid-template-columns:minmax(7rem,10rem) 1fr;gap:.6rem 1.25rem}
+dt{font:800 .95rem var(--sans);color:var(--accent)}
+dd{margin:0}
+.model-box{background:var(--panel);border-left:6px solid var(--red);padding:1rem 1.25rem;margin:1.25rem 0;border-radius:.25rem}
+.model-box strong{font-family:var(--sans)}
+.sorry{background:var(--tnt);color:#1a201a;padding:1.1rem 1.25rem;border-radius:.25rem;margin:1.25rem 0;font-family:var(--sans);font-weight:600}
+.sorry b{display:block;font-size:1.25rem;font-weight:900;margin-bottom:.25rem}
+.safe{border:2px solid var(--muted);padding:.9rem 1.1rem;border-radius:.25rem;margin-top:1.5rem;font-size:.95rem;color:var(--muted)}
+/* ảnh */
+figure.photo{margin:1rem 0;max-width:34rem}
+figure.photo img{display:block;width:100%;height:auto;border-radius:.25rem;border:2px solid var(--accent)}
+figure.photo figcaption{font-size:.875rem;color:var(--muted);margin-top:.4rem}
+figure.photo.empty img{display:none}
+figure.photo.empty::before{content:"Chưa có ảnh. Thêm file: " attr(data-file);display:flex;align-items:center;justify-content:center;text-align:center;min-height:11rem;padding:1rem;border:2px dashed var(--muted);border-radius:.25rem;font:600 .95rem var(--sans);color:var(--muted)}
+
+/* mô phỏng */
+.field{position:relative;width:min(100%,28rem);aspect-ratio:1;background:#1a201a;border:2px solid var(--accent);border-radius:50%;overflow:hidden;touch-action:none;cursor:crosshair;margin:1rem 0}
+.field .ring{position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.ring-green{width:96%;height:96%;background:rgba(120,170,90,.34)} .ring-yellow{width:74%;height:74%;background:rgba(214,190,60,.42)} .ring-orange{width:50%;height:50%;background:rgba(226,142,52,.56)} .ring-red{width:26%;height:26%;background:rgba(217,87,59,.78)}
+.field .src{position:absolute;left:50%;top:50%;width:2.6rem;height:1.6rem;margin:-.8rem 0 0 -1.3rem;background:var(--c4);color:#1a201a;font:800 .75rem/1.6rem var(--sans);text-align:center;border-radius:.2rem;pointer-events:none}
+.field .you{position:absolute;width:1.1rem;height:1.1rem;margin:-.55rem 0 0 -.55rem;border-radius:50%;background:#fff;border:3px solid #1a201a;box-shadow:0 0 0 2px #fff;pointer-events:none}
+.ctrl{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;margin:.5rem 0;font:600 .95rem var(--sans)}
+.ctrl input[type=range]{width:12rem;accent-color:var(--accent)}
+.ctrl input[type=number]{width:5rem;padding:.3rem;font:inherit;background:var(--panel);color:var(--ink);border:1px solid var(--muted);border-radius:.25rem}
+.readout{background:var(--panel);border-left:6px solid var(--accent);padding:1rem 1.25rem;border-radius:.25rem;margin:1rem 0}
+.readout .num{font:900 1.6rem/1.2 var(--sans)}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font:600 .85rem var(--sans);color:var(--muted);margin:.25rem 0}
+.legend i{display:inline-block;width:.9rem;height:.9rem;border-radius:50%;vertical-align:-.1rem;margin-right:.3rem}
+.btn{font:800 1rem var(--sans);background:var(--red);color:#fff;border:0;border-radius:.4rem;padding:.8rem 1.4rem;cursor:pointer}
+.btn:hover{background:#e8664a}
+
+
+.medical-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.medical-table th,.medical-table td{border:1px solid #53604f;padding:.65rem;text-align:left;vertical-align:top}
+.medical-table th{font:800 .9rem var(--sans);color:var(--accent);background:var(--panel)}
+@media(max-width:36rem){.medical-table th,.medical-table td{padding:.45rem;font-size:.85rem}}
+
+.injury-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.8rem;margin:1rem 0}
+.injury-card{background:var(--panel);border:1px solid #53604f;border-radius:.35rem;padding:1rem}
+.injury-card h3{font:800 1.05rem var(--sans);margin:0 0 .4rem;color:var(--accent)}
+.injury-card p{margin:.2rem 0}
+.sources a{color:var(--accent);overflow-wrap:anywhere}
+
+footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--muted);font-size:.875rem;border-top:1px solid #3a463a}
+@media (max-width:30rem){dl{grid-template-columns:1fr;gap:.1rem}dd{margin-bottom:.7rem}}
+@media (prefers-reduced-motion:no-preference){.choice,.tabs a{transition:transform .15s}.choice:hover{transform:translateY(-4px)}}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Điều hướng chính">
+  <a class="brand" href="#home">C-4 &amp; TNT</a>
+  <a href="#c4" data-nav="c4">C-4</a>
+  <a href="#tnt" data-nav="tnt">TNT</a>
+</nav>
+
+<!-- TRANG CHỦ -->
+<main data-view="home">
+  <div class="intro">
+    <h1>Hai loại thuốc nổ, hai mô hình trưng bày</h1>
+    <p>Trang này giới thiệu lịch sử và đặc điểm của C-4 và TNT, kèm phần riêng về mô hình thực tế do mình tự làm. Chọn một loại để xem.</p>
+  </div>
+  <div class="choices">
+    <a class="choice c4" href="#c4">
+      <span class="big">C-4</span>
+      <span class="desc">Thuốc nổ dẻo. Có mô hình minh họa bằng bóng bay.</span>
+      <span class="go">Xem C-4</span>
+    </a>
+    <a class="choice tnt" href="#tnt">
+      <span class="big">TNT</span>
+      <span class="desc">Thuốc nổ cổ điển. Mô hình chỉ để trưng bày.</span>
+      <span class="go">Xem TNT</span>
+    </a>
+  </div>
+  <p class="note">Tất cả mô hình trên trang này không chứa thuốc nổ thật.</p>
+</main>
+
+<!-- C-4 -->
+<main data-view="c4">
+  <header class="cat-head">
+    <h1>C-4</h1>
+    <p>Composition C-4, thuốc nổ dẻo</p>
+  </header>
+  <div class="tabs" role="navigation" aria-label="Mục của C-4">
+    <a href="#c4-history" data-tab="history">Lịch sử</a>
+    <a href="#c4-traits" data-tab="traits">Đặc điểm</a>
+    <a href="#c4-model" data-tab="model" class="model">Mô hình của mình</a>
+    <a href="#c4-sim" data-tab="sim" class="model">Mô phỏng an toàn</a>
+  </div>
+
+  <section class="panel" data-panel="history">
+    <h2>Tên gọi</h2>
+    <p>C-4 là tên gọi tắt của <em>Composition C-4</em>. Chữ “C” là “Composition”, chỉ một họ hỗn hợp thuốc nổ. Vì có thể nhào nặn như đất sét nên nó được gọi là thuốc nổ dẻo (<em>plastic explosive</em>).</p>
+    <h2>Nguồn gốc</h2>
+    <p>Chất nổ chính của C-4 là RDX, được điều chế lần đầu vào cuối thế kỷ 19. Trong Thế chiến thứ hai, các hỗn hợp thuốc nổ dẻo dựa trên RDX được phát triển, mở đầu họ Composition. Quân đội Mỹ cải tiến dần qua các bản C-2, C-3 rồi đến C-4 vào khoảng thập niên 1950 đến đầu thập niên 1960.</p>
+    <h2>Công dụng trong lịch sử</h2>
+    <p>C-4 được công binh quân đội dùng để phá hủy cầu, công sự và chướng ngại vật, vì dễ tạo hình và đặt vào đúng vị trí cần phá. Nó được sử dụng rộng rãi trong nhiều cuộc xung đột nửa sau thế kỷ 20, trong đó có Chiến tranh Việt Nam. Ngoài quân sự, các loại thuốc nổ tương tự cũng được dùng trong phá dỡ và xây dựng có kiểm soát bởi người được cấp phép.</p>
+  </section>
+
+  <section class="panel" data-panel="traits">
+    <h2>Đặc điểm của C-4 thật</h2>
+    <figure class="photo" data-file="images/c4-that.jpg"><img src="images/c4-that.jpg" alt="Khối thuốc nổ dẻo C-4 ngoài đời" loading="lazy" onerror="this.closest('figure').classList.add('empty')"><figcaption>Ảnh tư liệu C-4 ngoài đời. Hãy thay ảnh bằng ảnh bạn có quyền sử dụng và ghi nguồn bên dưới.</figcaption></figure>
+    <dl>
+      <dt>Hình dạng</dt><dd>Khối chữ nhật màu trắng ngà, mềm và dẻo, thường được bọc trong màng nhựa. Loại phổ biến trong quân đội Mỹ là khối M112 nặng khoảng 570 g.</dd>
+      <dt>Vật liệu</dt><dd>Chất nổ chính RDX trộn với chất kết dính và chất hóa dẻo (dầu, nhựa) để giữ độ mềm và tạo hình được.</dd>
+      <dt>Cách dùng</dt><dd>Người dùng cắt hoặc nặn khối theo vị trí cần phá. Một số khối có mặt dán để bám vào bề mặt.</dd>
+      <dt>Độ ổn định</dt><dd>Rất ổn định: va đập hay lửa thông thường không làm nó nổ, nên được xem là an toàn khi vận chuyển. Vì vậy chỉ người được huấn luyện và cấp phép mới được sử dụng.</dd>
+    </dl>
+    <p>Hình ảnh C-4 trong phim và game thường được vẽ khác thực tế. Phần dưới đây mới nói về mô hình của mình.</p>
+  </section>
+
+  <section class="panel" data-panel="model">
+    <div class="model-box"><strong>Phần này nói về mô hình, không phải vật thật.</strong> Mô hình C-4 này do mình tự làm để trưng bày và tương tác, không chứa thuốc nổ hay hóa chất nguy hiểm.</div>
+    <figure class="photo" data-file="images/c4-mohinh.jpg"><img src="images/c4-mohinh.jpg" alt="Mô hình C-4 tự làm" loading="lazy" onerror="this.closest('figure').classList.add('empty')"><figcaption>Mô hình C-4 do mình tự làm.</figcaption></figure>
+    <h2>Chức năng của mô hình</h2>
+    <p>Mô hình C-4 có chức năng nổ giả bằng bóng bay: khi kích hoạt, bóng bay bên trong nổ “bốp” để tạo hiệu ứng như một vụ nổ trên sân khấu.</p>
+    <!-- CHỈNH SỬA: thêm cách kích hoạt thực tế của mô hình (nút bấm, kim chọc, hẹn giờ...), kích thước, vật liệu, và ảnh sản phẩm tại đây -->
+    <p>Hiệu ứng chỉ là tiếng nổ nhỏ của bóng bay. Khi quan sát, khán giả nên đứng cách mô hình một khoảng vừa phải vì tiếng nổ có thể gây giật mình.</p>
+    <div class="safe">Mô hình dùng để trình diễn. Đây không phải đồ chơi cho trẻ nhỏ, và mảnh bóng bay vỡ cần được thu dọn sau khi nổ.</div>
+  </section>
+
+  <section class="panel" data-panel="sim">
+    <div class="model-box"><strong>Mô phỏng giáo dục an toàn.</strong><p>Khối lượng giả định trong bài giảng: <strong>1 kg C-4</strong>.</p>Các màu biểu thị mức cảnh báo trong mô phỏng.</div>
+    <h2>Chọn một vị trí trên sơ đồ</h2>
+    <p>Bấm vào sơ đồ để đánh dấu vị trí giả định. Sơ đồ chỉ thể hiện mức cảnh báo trực quan.</p>
+    <div class="field" id="field" role="application" aria-label="Sơ đồ màu minh họa các khu vực giả định; bấm để chọn điểm">
+      <div class="ring ring-green"></div><div class="ring ring-yellow"></div><div class="ring ring-orange"></div><div class="ring ring-red"></div>
+      <div class="src">VẬT THỂ</div><div class="you" id="you"></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:#d9573b"></i>Đỏ: tránh xa ngay</span>
+      <span><i style="background:#e28e34"></i>Cam: rời khỏi khu vực</span>
+      <span><i style="background:#d6be3c"></i>Vàng: tiếp tục tránh, không quay lại</span>
+      <span><i style="background:#78aa5a"></i>Xanh: ngoài vùng minh họa, không có nghĩa là an toàn</span>
+    </div>
+    <div class="readout" id="out" aria-live="polite"></div>
+
+    <h2>Nhóm thương tích và biểu hiện có thể gặp</h2>
+    <table class="medical-table"><thead><tr><th>Nhóm</th><th>Biểu hiện có thể gặp</th><th>Hướng xử trí</th></tr></thead><tbody>
+      <tr><td>Sóng áp lực</td><td>Ù tai, giảm thính lực, đau ngực, khó thở</td><td>Đánh giá y tế; cấp cứu nếu khó thở hoặc đau ngực</td></tr>
+      <tr><td>Mảnh văng / vật thể</td><td>Vết thương, tổn thương mắt, chấn thương</td><td>Tránh tiếp xúc; cần trợ giúp y tế, đặc biệt khi bị thương ở mắt</td></tr>
+      <tr><td>Va đập / bị xô đẩy</td><td>Ngã, chấn thương đầu hoặc xương</td><td>Không tự di chuyển nếu nghi chấn thương nghiêm trọng; gọi cấp cứu</td></tr>
+      <tr><td>Nhiệt / khói</td><td>Bỏng, ho, khó thở do khói</td><td>Rời khỏi khói nếu an toàn và tìm trợ giúp y tế</td></tr>
+    </tbody></table>
+    <p>Tài liệu y khoa phân loại thương tích do vụ nổ theo cơ chế. Các nhóm dưới đây có thể xảy ra đồng thời.</p>
+    <div class="injury-grid">
+      <article class="injury-card"><h3>1. Sóng áp lực</h3><p>Có thể ảnh hưởng tai, phổi và các cơ quan bên trong. Dấu hiệu cần chú ý: đau ngực, khó thở, ho, chóng mặt, ù tai hoặc giảm thính lực.</p></article>
+      <article class="injury-card"><h3>2. Mảnh văng / vật thể</h3><p>Vật liệu xung quanh có thể gây vết thương, chấn thương mắt hoặc tổn thương do va đập. Vết thương nhỏ bên ngoài không bảo đảm tổn thương bên trong nhẹ.</p></article>
+      <article class="injury-card"><h3>3. Va đập / bị xô đẩy</h3><p>Người có thể bị ngã hoặc va vào vật cứng, dẫn đến chấn thương đầu, xương hoặc các vùng cơ thể khác.</p></article>
+      <article class="injury-card"><h3>4. Nhiệt, khói và môi trường</h3><p>Có thể gây bỏng, khó thở do khói, hoặc nguy cơ từ vật liệu sập và các chất trong môi trường.</p></article>
+    </div>
+    <h2>Nếu có người ở gần một vụ nổ</h2>
+    <ul>
+      <li>Rời khu vực nguy hiểm nếu có thể làm vậy an toàn; không quay lại và không chạm vào vật thể đáng ngờ.</li>
+      <li>Báo người lớn, lực lượng chức năng và dịch vụ cấp cứu tại địa phương.</li>
+      <li>Người đã ở gần vụ nổ cần được nhân viên y tế đánh giá, kể cả khi chưa thấy thương tích rõ ràng; một số triệu chứng có thể xuất hiện muộn.</li>
+      <li>Khó thở, đau ngực, lú lẫn, giảm thính lực, chảy máu hoặc bỏng là dấu hiệu cần trợ giúp y tế khẩn cấp.</li>
+    </ul>
+    <div class="safe"><strong>Lưu ý:</strong> sơ đồ dùng để minh họa các mức cảnh báo; vùng xanh không đồng nghĩa an toàn.</div>
+    <h2>Nguồn tham khảo y khoa</h2>
+    <ul class="sources">
+      <li><a href="https://stacks.cdc.gov/view/cdc/21571/cdc_21571_DS1.pdf" target="_blank" rel="noopener">CDC — Blast Injuries: Fact Sheets for Professionals</a></li>
+      <li><a href="https://blastinjuryresearch.health.mil/index.cfm/blast_injury_101/what_is_blast_injury" target="_blank" rel="noopener">U.S. Department of Defense — What is Blast Injury?</a></li>
+      <li><a href="https://www.msdmanuals.com/professional/multimedia/table/mechanisms-of-blast-injury" target="_blank" rel="noopener">MSD Manual — Mechanisms of Blast Injury</a></li>
+    </ul>
+  </section>
+</main>
+
+<!-- TNT -->
+<main data-view="tnt">
+  <header class="cat-head">
+    <h1>TNT</h1>
+    <p>Trinitrotoluene, thuốc nổ cổ điển</p>
+  </header>
+  <div class="tabs" role="navigation" aria-label="Mục của TNT">
+    <a href="#tnt-history" data-tab="history">Lịch sử</a>
+    <a href="#tnt-traits" data-tab="traits">Đặc điểm</a>
+    <a href="#tnt-model" data-tab="model" class="model">Mô hình của mình</a>
+    <a href="#tnt-sim" data-tab="sim" class="model">Mô phỏng an toàn</a>
+  </div>
+
+  <section class="panel" data-panel="history">
+    <h2>Tên gọi</h2>
+    <p>TNT là viết tắt của <em>trinitrotoluene</em>, tên hóa học đầy đủ là 2,4,6-trinitrotoluene. Ở Việt Nam thường gọi đơn giản là thuốc nổ TNT.</p>
+    <h2>Nguồn gốc</h2>
+    <p>Năm 1863, nhà hóa học người Đức Julius Wilbrand điều chế TNT lần đầu, ban đầu để làm thuốc nhuộm màu vàng. Vì TNT rất ổn định, khả năng gây nổ của nó bị bỏ qua nhiều năm. Đến đầu thế kỷ 20, quân đội Đức đưa TNT vào nạp đạn pháo (khoảng năm 1902), rồi các nước khác lần lượt làm theo.</p>
+    <h2>Công dụng trong lịch sử</h2>
+    <p>TNT là loại thuốc nổ chủ lực của Thế chiến thứ nhất và thứ hai, dùng nạp đạn pháo, bom, ngư lôi và mìn. Trong đời sống dân sự, TNT từng được dùng trong khai thác mỏ, phá đá và xây dựng. Ngày nay, TNT còn là đơn vị đo sức nổ: khi nói “một kiloton TNT”, người ta so sánh năng lượng giải phóng với lượng TNT tương đương.</p>
+  </section>
+
+  <section class="panel" data-panel="traits">
+    <h2>Đặc điểm của TNT thật</h2>
+    <figure class="photo" data-file="images/tnt-that.jpg"><img src="images/tnt-that.jpg" alt="Khối thuốc nổ TNT ngoài đời" loading="lazy" onerror="this.closest('figure').classList.add('empty')"><figcaption>Ảnh tư liệu TNT ngoài đời. Hãy thay ảnh bằng ảnh bạn có quyền sử dụng và ghi nguồn bên dưới.</figcaption></figure>
+    <dl>
+      <dt>Hình dạng</dt><dd>Chất rắn màu vàng nhạt đến nâu, thường được đúc thành khối hoặc thỏi, bọc giấy hay nhựa.</dd>
+      <dt>Vật liệu</dt><dd>Hợp chất hữu cơ trinitrotoluene, không cần pha thêm loại thuốc nổ khác để sử dụng.</dd>
+      <dt>Cách dùng</dt><dd>Nóng chảy ở khoảng 80 °C nên có thể đổ khuôn vào vỏ đạn hoặc vỏ bom. Hiện nay chủ yếu được dùng trong đạn dược và trộn cùng chất nổ khác.</dd>
+      <dt>Độ ổn định</dt><dd>Khá ổn định, ít nhạy với va đập và ma sát, không hút ẩm nhiều.</dd>
+    </dl>
+    <p><b>Lưu ý hay nhầm:</b> thỏi màu đỏ có ngòi dây trong phim hoạt hình thật ra là dynamite, do Alfred Nobel phát minh năm 1867. Dynamite là loại khác, không phải TNT.</p>
+  </section>
+
+  <section class="panel" data-panel="model">
+    <div class="sorry"><b>Xin lỗi các bạn khán giả</b>Mô hình TNT chỉ là vật trưng bày, không có chức năng hay hiệu ứng gì. Mình mong các bạn thông cảm, và cảm ơn đã ghé xem.</div>
+    <figure class="photo" data-file="images/tnt-mohinh.jpg"><img src="images/tnt-mohinh.jpg" alt="Mô hình TNT tự làm" loading="lazy" onerror="this.closest('figure').classList.add('empty')"><figcaption>Mô hình TNT trưng bày.</figcaption></figure>
+    <p>Bạn có thể xem mô hình C-4 ở mục bên cạnh, bản có hiệu ứng nổ bằng bóng bay.</p>
+    <p><a href="#c4-model">Xem mô hình C-4</a></p>
+  </section>
+
+  <section class="panel" data-panel="sim">
+    <div class="model-box"><strong>Mô phỏng giáo dục an toàn.</strong><p>Khối lượng giả định trong bài giảng: <strong>1 kg TNT</strong>.</p>Các màu biểu thị mức cảnh báo trong mô phỏng.</div>
+    <h2>Chọn vị trí trên sơ đồ</h2>
+    <p>Bấm vào sơ đồ để đánh dấu một vị trí giả định. Các màu biểu thị mức cảnh báo trong mô phỏng.</p>
+    <div class="field" id="tnt-field" role="application" aria-label="Sơ đồ minh họa an toàn cho TNT; bấm chọn vị trí">
+      <div class="ring ring-green"></div><div class="ring ring-yellow"></div><div class="ring ring-orange"></div><div class="ring ring-red"></div>
+      <div class="src" style="background:var(--tnt)">TNT</div><div class="you" id="tnt-you"></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:#d9573b"></i>Đỏ — tránh xa ngay</span>
+      <span><i style="background:#e28e34"></i>Cam — nguy cơ nghiêm trọng</span>
+      <span><i style="background:#d6be3c"></i>Vàng — cảnh giác cao</span>
+      <span><i style="background:#78aa5a"></i>Xanh — không đồng nghĩa an toàn</span>
+    </div>
+    <div class="readout" id="tnt-out" aria-live="polite"></div>
+    <h2>Nhóm thương tích và biểu hiện có thể gặp</h2>
+    <table class="medical-table"><thead><tr><th>Nhóm</th><th>Biểu hiện có thể gặp</th><th>Hướng xử trí</th></tr></thead><tbody>
+      <tr><td>Sóng áp lực</td><td>Ù tai, giảm thính lực, đau ngực, khó thở</td><td>Đánh giá y tế; cấp cứu nếu khó thở hoặc đau ngực</td></tr>
+      <tr><td>Mảnh văng / vật thể</td><td>Vết thương, tổn thương mắt, chấn thương</td><td>Tránh tiếp xúc; cần trợ giúp y tế, đặc biệt khi bị thương ở mắt</td></tr>
+      <tr><td>Va đập / bị xô đẩy</td><td>Ngã, chấn thương đầu hoặc xương</td><td>Không tự di chuyển nếu nghi chấn thương nghiêm trọng; gọi cấp cứu</td></tr>
+      <tr><td>Nhiệt / khói</td><td>Bỏng, ho, khó thở do khói</td><td>Rời khỏi khói nếu an toàn và tìm trợ giúp y tế</td></tr>
+    </tbody></table>
+    <p>TNT cũng có thể gây các loại chấn thương liên quan đến vụ nổ.</p>
+    <div class="injury-grid">
+      <article class="injury-card"><h3>Sóng áp lực</h3><p>Nguy cơ tổn thương tai, phổi và cơ quan bên trong; triệu chứng có thể không xuất hiện ngay.</p></article>
+      <article class="injury-card"><h3>Mảnh văng</h3><p>Mảnh vật liệu có thể gây vết thương, tổn thương mắt hoặc chấn thương do vật thể va chạm.</p></article>
+      <article class="injury-card"><h3>Va đập</h3><p>Ngã hoặc bị xô vào vật cứng có thể gây chấn thương đầu và các vùng cơ thể.</p></article>
+      <article class="injury-card"><h3>Nhiệt / khói</h3><p>Nguy cơ bỏng, hít khói hoặc ảnh hưởng bởi môi trường xung quanh.</p></article>
+    </div>
+    <h2>Ứng phó an toàn</h2>
+    <ul>
+      <li>Không chạm, dịch chuyển hay tiến lại gần vật nghi là thuốc nổ.</li>
+      <li>Rời khỏi khu vực nếu có thể làm vậy an toàn; báo người lớn và lực lượng chức năng.</li>
+      <li>Nếu từng ở gần vụ nổ, cần được nhân viên y tế kiểm tra, kể cả khi chưa có triệu chứng rõ.</li>
+      <li>Khó thở, đau ngực, lú lẫn, giảm thính lực, bỏng hoặc chảy máu cần trợ giúp y tế khẩn cấp.</li>
+    </ul>
+    <div class="safe"><strong>Giới hạn:</strong> màu sắc và vị trí bấm không đại diện cho mức sát thương, xác suất bị thương hay khoảng cách an toàn ngoài đời.</div>
+    <h2>Nguồn tham khảo y khoa</h2>
+    <ul class="sources">
+      <li><a href="https://stacks.cdc.gov/view/cdc/21571/cdc_21571_DS1.pdf" target="_blank" rel="noopener">CDC — Blast Injuries: Fact Sheets for Professionals</a></li>
+      <li><a href="https://blastinjuryresearch.health.mil/index.cfm/blast_injury_101/what_is_blast_injury" target="_blank" rel="noopener">U.S. Department of Defense — What is Blast Injury?</a></li>
+      <li><a href="https://www.msdmanuals.com/professional/multimedia/table/mechanisms-of-blast-injury" target="_blank" rel="noopener">MSD Manual — Mechanisms of Blast Injury</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Nội dung mang tính giới thiệu lịch sử và giáo dục an toàn. Mô hình trưng bày không chứa thuốc nổ thật; sơ đồ màu không thể dùng để đánh giá nguy cơ thực tế.
+</footer>
+
+<script>
+(function () {
+  var cats = ["c4", "tnt"], tabs = ["history", "traits", "model"];
+  function route() {
+    var m = (location.hash || "").replace("#", "").match(/^(c4|tnt)(?:-(history|traits|model|sim))?$/);
+    var cat = m ? m[1] : "home";
+    var tab = m ? (m[2] || "history") : null;
+    document.body.dataset.cat = cat;
+    document.querySelectorAll("[data-view]").forEach(function (el) {
+      el.hidden = el.dataset.view !== cat;
+    });
+    document.querySelectorAll("[data-panel]").forEach(function (el) {
+      var inCat = el.closest("[data-view]").dataset.view === cat;
+      el.hidden = !(inCat && el.dataset.panel === tab);
+    });
+    document.querySelectorAll(".tabs a").forEach(function (a) {
+      var inCat = a.closest("[data-view]").dataset.view === cat;
+      if (inCat && a.dataset.tab === tab) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+    document.querySelectorAll(".top a[data-nav]").forEach(function (a) {
+      if (a.dataset.nav === cat) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    var titles = { home: "C-4 và TNT: lịch sử và mô hình trưng bày", c4: "C-4: lịch sử và mô hình", tnt: "TNT: lịch sử và mô hình" };
+    document.title = titles[cat];
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+<script>
+(function () {
+  function initMap(fieldId, markerId, outId, label) {
+    var f = document.getElementById(fieldId);
+    if (!f) return;
+    var you = document.getElementById(markerId), out = document.getElementById(outId);
+    function render(x, y) {
+      you.style.left = (x * 100) + "%";
+      you.style.top = (y * 100) + "%";
+      var dx = x - .5, dy = y - .5, r = Math.hypot(dx, dy);
+      var zoneInfo = r <= .13 ? {
+        title: "Cảnh báo nghiêm trọng",
+        message: "Không tiếp cận. Rời khu vực ngay nếu có thể làm vậy an toàn; báo người lớn và lực lượng chức năng."
+      } : r <= .25 ? {
+        title: "Cảnh báo rất cao",
+        message: "Rời khỏi khu vực, tránh quay lại và không chạm vào bất kỳ vật thể đáng ngờ nào. Báo lực lượng chức năng."
+      } : r <= .37 ? {
+        title: "Cảnh báo cao",
+        message: "Tiếp tục tránh xa khu vực và tìm nơi an toàn. Không tự kiểm tra hay di chuyển vật thể đáng ngờ."
+      } : {
+        title: "Cần cảnh giác",
+        message: "Vị trí này không được xem là an toàn. Giữ khoảng cách, tránh tiếp cận và làm theo hướng dẫn của lực lượng chức năng."
+      };
+      out.innerHTML = '<div class="num">' + label + '</div>' +
+        '<p><strong>Vùng được chọn:</strong> ' + zoneInfo.title + '</p>' +
+        '<p><strong>Cảnh báo:</strong> ' + zoneInfo.message + '</p>' +
+        '<p><strong>Hành động:</strong> Không tiếp cận vật thể đáng ngờ; rời khu vực nếu an toàn và báo người lớn hoặc lực lượng chức năng.</p>';
+    }
+    f.addEventListener("pointerdown", function (e) {
+      var r = f.getBoundingClientRect();
+      var x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      var y = Math.max(0, Math.min(1, (e.clientY - r.top) / r.height));
+      render(x, y);
+    });
+    render(.68, .5);
+  }
+  initMap("field", "you", "out", "C-4");
+  initMap("tnt-field", "tnt-you", "tnt-out", "TNT");
+})();
+</script>
+
+
+</body>
+</html>
