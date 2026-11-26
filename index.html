@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>C-4 và TNT: lịch sử và mô hình trưng bày</title>
+<title>C-4 và TNT: lịch sử và đặc điểm</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -118,21 +118,20 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
 <main data-view="home">
   <div class="intro">
     <h1>Hai loại thuốc nổ, hai mô hình trưng bày</h1>
-    <p>Trang này giới thiệu lịch sử và đặc điểm của C-4 và TNT, kèm phần riêng về mô hình thực tế do mình tự làm. Chọn một loại để xem.</p>
+    <p>Trang này giới thiệu lịch sử và đặc điểm của C-4 và TNT. Chọn một loại để xem.</p>
   </div>
   <div class="choices">
     <a class="choice c4" href="#c4">
       <span class="big">C-4</span>
-      <span class="desc">Thuốc nổ dẻo. Có mô hình minh họa bằng bóng bay.</span>
+      <span class="desc">Thuốc nổ dẻo.</span>
       <span class="go">Xem C-4</span>
     </a>
     <a class="choice tnt" href="#tnt">
       <span class="big">TNT</span>
-      <span class="desc">Thuốc nổ cổ điển. Mô hình chỉ để trưng bày.</span>
+      <span class="desc">Thuốc nổ cổ điển.</span>
       <span class="go">Xem TNT</span>
     </a>
   </div>
-  <p class="note">Tất cả mô hình trên trang này không chứa thuốc nổ thật.</p>
 </main>
 
 <!-- C-4 -->
@@ -144,7 +143,6 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
   <div class="tabs" role="navigation" aria-label="Mục của C-4">
     <a href="#c4-history" data-tab="history">Lịch sử</a>
     <a href="#c4-traits" data-tab="traits">Đặc điểm</a>
-    <a href="#c4-model" data-tab="model" class="model">Mô hình của mình</a>
     <a href="#c4-sim" data-tab="sim" class="model">Mô phỏng an toàn</a>
   </div>
 
@@ -169,16 +167,6 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
     <p>Hình ảnh C-4 trong phim và game thường được vẽ khác thực tế. Phần dưới đây mới nói về mô hình của mình.</p>
   </section>
 
-  <section class="panel" data-panel="model">
-    <div class="model-box"><strong>Phần này nói về mô hình, không phải vật thật.</strong> Mô hình C-4 này do mình tự làm để trưng bày và tương tác, không chứa thuốc nổ hay hóa chất nguy hiểm.</div>
-    <figure class="photo" data-file="images/c4-mohinh.jpg"><img src="images/c4-mohinh.jpg" alt="Mô hình C-4 tự làm" loading="lazy" onerror="this.closest('figure').classList.add('empty')"><figcaption>Mô hình C-4 do mình tự làm.</figcaption></figure>
-    <h2>Chức năng của mô hình</h2>
-    <p>Mô hình C-4 có chức năng nổ giả bằng bóng bay: khi kích hoạt, bóng bay bên trong nổ “bốp” để tạo hiệu ứng như một vụ nổ trên sân khấu.</p>
-    <!-- CHỈNH SỬA: thêm cách kích hoạt thực tế của mô hình (nút bấm, kim chọc, hẹn giờ...), kích thước, vật liệu, và ảnh sản phẩm tại đây -->
-    <p>Hiệu ứng chỉ là tiếng nổ nhỏ của bóng bay. Khi quan sát, khán giả nên đứng cách mô hình một khoảng vừa phải vì tiếng nổ có thể gây giật mình.</p>
-    <div class="safe">Mô hình dùng để trình diễn. Đây không phải đồ chơi cho trẻ nhỏ, và mảnh bóng bay vỡ cần được thu dọn sau khi nổ.</div>
-  </section>
-
   <section class="panel" data-panel="sim">
     <div class="model-box"><strong>Mô phỏng giáo dục an toàn.</strong><p>Khối lượng giả định trong bài giảng: <strong>1 kg C-4</strong>.</p>Các màu biểu thị mức cảnh báo trong mô phỏng.</div>
     <h2>Chọn một vị trí trên sơ đồ</h2>
@@ -188,10 +176,10 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
       <div class="src">VẬT THỂ</div><div class="you" id="you"></div>
     </div>
     <div class="legend">
-      <span><i style="background:#d9573b"></i>Đỏ: tránh xa ngay</span>
-      <span><i style="background:#e28e34"></i>Cam: rời khỏi khu vực</span>
-      <span><i style="background:#d6be3c"></i>Vàng: tiếp tục tránh, không quay lại</span>
-      <span><i style="background:#78aa5a"></i>Xanh: ngoài vùng minh họa, không có nghĩa là an toàn</span>
+      <span><i style="background:#d9573b"></i>Đỏ: tránh xa ngay </span>
+      <span><i style="background:#e28e34"></i>Cam: rời khỏi khu vực  </span>
+      <span><i style="background:#d6be3c"></i>Vàng: tiếp tục tránh, không quay lại  </span>
+      <span><i style="background:#78aa5a"></i>Xanh: ngoài vùng minh họa, không có nghĩa là an toàn  </span>
     </div>
     <div class="readout" id="out" aria-live="polite"></div>
 
@@ -235,7 +223,6 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
   <div class="tabs" role="navigation" aria-label="Mục của TNT">
     <a href="#tnt-history" data-tab="history">Lịch sử</a>
     <a href="#tnt-traits" data-tab="traits">Đặc điểm</a>
-    <a href="#tnt-model" data-tab="model" class="model">Mô hình của mình</a>
     <a href="#tnt-sim" data-tab="sim" class="model">Mô phỏng an toàn</a>
   </div>
 
@@ -258,13 +245,6 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
       <dt>Độ ổn định</dt><dd>Khá ổn định, ít nhạy với va đập và ma sát, không hút ẩm nhiều.</dd>
     </dl>
     <p><b>Lưu ý hay nhầm:</b> thỏi màu đỏ có ngòi dây trong phim hoạt hình thật ra là dynamite, do Alfred Nobel phát minh năm 1867. Dynamite là loại khác, không phải TNT.</p>
-  </section>
-
-  <section class="panel" data-panel="model">
-    <div class="sorry"><b>Xin lỗi các bạn khán giả</b>Mô hình TNT chỉ là vật trưng bày, không có chức năng hay hiệu ứng gì. Mình mong các bạn thông cảm, và cảm ơn đã ghé xem.</div>
-    <figure class="photo" data-file="images/tnt-mohinh.jpg"><img src="images/tnt-mohinh.jpg" alt="Mô hình TNT tự làm" loading="lazy" onerror="this.closest('figure').classList.add('empty')"><figcaption>Mô hình TNT trưng bày.</figcaption></figure>
-    <p>Bạn có thể xem mô hình C-4 ở mục bên cạnh, bản có hiệu ứng nổ bằng bóng bay.</p>
-    <p><a href="#c4-model">Xem mô hình C-4</a></p>
   </section>
 
   <section class="panel" data-panel="sim">
@@ -315,14 +295,14 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
 </main>
 
 <footer>
-  Nội dung mang tính giới thiệu lịch sử và giáo dục an toàn. Mô hình trưng bày không chứa thuốc nổ thật; sơ đồ màu không thể dùng để đánh giá nguy cơ thực tế.
+  Nội dung mang tính giới thiệu lịch sử và giáo dục an toàn; sơ đồ màu không thể dùng để đánh giá nguy cơ thực tế.
 </footer>
 
 <script>
 (function () {
   var cats = ["c4", "tnt"], tabs = ["history", "traits", "model"];
   function route() {
-    var m = (location.hash || "").replace("#", "").match(/^(c4|tnt)(?:-(history|traits|model|sim))?$/);
+    var m = (location.hash || "").replace("#", "").match(/^(c4|tnt)(?:-(history|traits|sim))?$/);
     var cat = m ? m[1] : "home";
     var tab = m ? (m[2] || "history") : null;
     document.body.dataset.cat = cat;
@@ -342,7 +322,7 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
       if (a.dataset.nav === cat) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
-    var titles = { home: "C-4 và TNT: lịch sử và mô hình trưng bày", c4: "C-4: lịch sử và mô hình", tnt: "TNT: lịch sử và mô hình" };
+    var titles = { home: "C-4 và TNT: lịch sử và đặc điểm", c4: "C-4: lịch sử và đặc điểm", tnt: "TNT: lịch sử và đặc điểm" };
     document.title = titles[cat];
     window.scrollTo(0, 0);
   }
@@ -350,44 +330,102 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem var(--pad) 3rem;color:var(--
   route();
 })();
 </script>
+
 <script>
 (function () {
-  function initMap(fieldId, markerId, outId, label) {
+  var profiles = {
+    c4: {
+      label: "C-4 (1 kg giả định)",
+      maxDistMeters: 16.0, // Bán kính tối đa của sơ đồ (tương ứng r = 0.5)
+      zones: [
+        {
+          maxR: 0.13, // Tương ứng vòng đỏ (26% đường kính)
+          title: "Nguy cơ tử vong - ≤ 1,7 m",
+          message: "Nguy cơ tử vong rất cao (50% – 99%), xuất huyết nội tạng nặng, vỡ phổi, tổn thương não."
+        },
+        {
+          maxR: 0.25, // Tương ứng vòng cam (50% đường kính)
+          title: "Chấn thương nặng - 1,7 – 2,8 m",
+          message: "Dập hoặc rách phổi, chấn thương sọ não, đe dọa tính mạng nếu không cấp cứu kịp thời."
+        },
+        {
+          maxR: 0.37, // Tương ứng vòng vàng (74% đường kính)
+          title: "Tổn thương thính giác - 2,8 – 6,0 m",
+          message: "Thủng màng nhĩ (từ ngưỡng bắt đầu rách đến tỷ lệ > 50%), choáng váng, ù tai nặng."
+        },
+        {
+          maxR: Infinity, // Tương ứng vòng xanh (96% đường kính)
+          title: "Ảnh hưởng gián tiếp - 6,0 – 16 m",
+          message: "Không tổn thương nội tạng trực tiếp, nhưng dễ làm vỡ kính và gây chấn thương do vật bay."
+        }
+      ]
+    },
+    tnt: {
+      label: "TNT (1 kg giả định)",
+      maxDistMeters: 15.0, // Bán kính tối đa của sơ đồ (tương ứng r = 0.5)
+      zones: [
+        {
+          maxR: 0.13, // Tương ứng vòng đỏ (26% đường kính)
+          title: "Nguy cơ tử vong - ≤ 1,5 m",
+          message: "Nguy cơ tử vong rất cao (50% – 99%), xuất huyết nội tạng nặng, vỡ phổi, tổn thương não."
+        },
+        {
+          maxR: 0.25, // Tương ứng vòng cam (50% đường kính)
+          title: "Chấn thương nặng - 1,5 – 2,5 m",
+          message: "Dập hoặc rách phổi, chấn thương sọ não, đe dọa tính mạng nếu không cấp cứu kịp thời."
+        },
+        {
+          maxR: 0.37, // Tương ứng vòng vàng (74% đường kính)
+          title: "Tổn thương thính giác - 2,5 – 5,5 m",
+          message: "Thủng màng nhĩ (từ ngưỡng bắt đầu rách đến tỷ lệ > 50%), choáng váng, ù tai nặng."
+        },
+        {
+          maxR: Infinity, // Tương ứng vòng xanh (96% đường kính)
+          title: "Ảnh hưởng gián tiếp - 5,5 – 15 m",
+          message: "Không tổn thương nội tạng trực tiếp, nhưng dễ làm vỡ kính và gây chấn thương do vật bay."
+        }
+      ]
+    }
+  };
+
+  function getZoneInfo(profile, r) {
+    for (var i = 0; i < profile.zones.length; i++) {
+      if (r <= profile.zones[i].maxR) return profile.zones[i];
+    }
+    return profile.zones[profile.zones.length - 1];
+  }
+
+  function initMap(fieldId, markerId, outId, profile) {
     var f = document.getElementById(fieldId);
     if (!f) return;
-    var you = document.getElementById(markerId), out = document.getElementById(outId);
+    var you = document.getElementById(markerId);
+    var out = document.getElementById(outId);
+
     function render(x, y) {
       you.style.left = (x * 100) + "%";
       you.style.top = (y * 100) + "%";
-      var dx = x - .5, dy = y - .5, r = Math.hypot(dx, dy);
-      var zoneInfo = r <= .13 ? {
-        title: "Cảnh báo nghiêm trọng",
-        message: "Không tiếp cận. Rời khu vực ngay nếu có thể làm vậy an toàn; báo người lớn và lực lượng chức năng."
-      } : r <= .25 ? {
-        title: "Cảnh báo rất cao",
-        message: "Rời khỏi khu vực, tránh quay lại và không chạm vào bất kỳ vật thể đáng ngờ nào. Báo lực lượng chức năng."
-      } : r <= .37 ? {
-        title: "Cảnh báo cao",
-        message: "Tiếp tục tránh xa khu vực và tìm nơi an toàn. Không tự kiểm tra hay di chuyển vật thể đáng ngờ."
-      } : {
-        title: "Cần cảnh giác",
-        message: "Vị trí này không được xem là an toàn. Giữ khoảng cách, tránh tiếp cận và làm theo hướng dẫn của lực lượng chức năng."
-      };
-      out.innerHTML = '<div class="num">' + label + '</div>' +
-        '<p><strong>Vùng được chọn:</strong> ' + zoneInfo.title + '</p>' +
-        '<p><strong>Cảnh báo:</strong> ' + zoneInfo.message + '</p>' +
+      var dx = x - 0.5, dy = y - 0.5, r = Math.hypot(dx, dy);
+      var zoneInfo = getZoneInfo(profile, r);
+
+      out.innerHTML =
+        '<div class="num">' + profile.label + '</div>' +
+        '<p><strong>Mức cảnh báo &amp; khoảng cách:</strong> ' + zoneInfo.title + '</p>' +
+        '<p><strong>Tác động lên cơ thể người:</strong> ' + zoneInfo.message + '</p>' +
         '<p><strong>Hành động:</strong> Không tiếp cận vật thể đáng ngờ; rời khu vực nếu an toàn và báo người lớn hoặc lực lượng chức năng.</p>';
     }
+
     f.addEventListener("pointerdown", function (e) {
       var r = f.getBoundingClientRect();
       var x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
       var y = Math.max(0, Math.min(1, (e.clientY - r.top) / r.height));
       render(x, y);
     });
-    render(.68, .5);
+
+    render(0.68, 0.5);
   }
-  initMap("field", "you", "out", "C-4");
-  initMap("tnt-field", "tnt-you", "tnt-out", "TNT");
+
+  initMap("field", "you", "out", profiles.c4);
+  initMap("tnt-field", "tnt-you", "tnt-out", profiles.tnt);
 })();
 </script>
 
